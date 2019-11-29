@@ -1,0 +1,96 @@
+
+body {
+  padding: 0px;
+  margin: 0px;
+  font-family: 'Roboto', sans-serif !important;
+  background-color: #F8F9FA;
+}
+
+
+.navbarIzq {
+ margin-top: 24px;
+}
+  /* unvisited link */
+ a:link {
+   color: #000000;
+ }
+
+ /* visited link */
+ a:visited {
+   color: #34495e;
+ }
+
+ /* mouse over link */
+ a:hover {
+   color: #ec0c0c;
+   text-decoration: none;
+ }
+
+ /* selected link */
+ a:active {
+     color: #CCCCCC;
+ }
+
+.container-navbar{
+padding: 0px;
+margin: 0px;
+
+}
+
+.navbarLogo{
+  padding-right: 15px;
+  padding-left: 20px;
+}
+
+.navbarIconosRight{
+  display: flex;
+  flex-direction: row;
+/*  justify-content: left;
+  float: left; */
+  padding-right: 15px;
+  padding-left: 15px;
+  overflow: hidden;
+}
+.navbarIconosList{
+  flex-direction: row;
+  float: left;
+  width: 50%;
+}
+
+.navbarIconosItem{
+width: 100%;
+}
+
+
+p.modalTile{
+  font-size: 20px;
+}
+
+.listTechSpecs{
+  font-size: 0.9rem;
+}
+
+@media only screen and (min-width: 1124px) {
+
+.navbarLogo{
+  padding-right: 15px;
+  padding-left: 80px;
+}
+
+.navbarIconosRight{
+  display: flex;
+  flex-direction: row;
+/*  justify-content: left;
+  float: left; */
+  padding-right: 75px;
+  padding-left: 15px;
+  overflow: hidden;
+}
+
+}
+
+@media only screen and (min-width: 500px) {
+
+/* Desaparece con display none el div con las publicidades
+
+}

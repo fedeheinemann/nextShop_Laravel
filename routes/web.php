@@ -12,9 +12,36 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 Auth::routes();
+/*
+GET  | login                  | Auth\LoginController@showLoginForm
+POST | login                  | Auth\LoginController@login
+POST | logout                 | Auth\LoginController@logout
+POST | password/email         | Auth\ForgotPasswordController@sendResetLinkEmail
+GET  | password/reset         | Auth\ForgotPasswordController@showLinkRequestForm
+POST | password/reset         | Auth\ResetPasswordController@reset
+GET  | password/reset/{token} | Auth\ResetPasswordController@showResetForm
+GET  | register               | Auth\RegisterController@showRegistrationForm
+POST | register               | Auth\RegisterController@register
+*/
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/register', 'Auth\RegisterController@showRegistrationForm');
+
+Route::post('/register', 'Auth\RegisterController@register');
+
+Route::get('/products', 'ProductController@list');
+
+Route::get('/products/{id}', 'ProductController@detail');
+
+Route::get('/admin/addProduct', 'ProductController@new')->middleware('is_admin');
+Route::post('/admin/addProduct', 'ProductController@addProduct')->middleware('is_admin');
+
+/*Route::get('/admin/addProduct', function(){
+    return view('/admin/addProduct');
+});
+*/
