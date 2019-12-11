@@ -6,9 +6,13 @@ body {
   background-color: #F8F9FA;
 }
 
+<<<<<<< HEAD
 ul {
   list-style: none;
 }
+=======
+
+>>>>>>> master
 .navbarIzq {
  margin-top: 24px;
 }
@@ -72,6 +76,7 @@ p.modalTile{
   font-size: 0.9rem;
 }
 
+<<<<<<< HEAD
 .mainProd{
   margin-top:1.5rem!important;
   margin-bottom:1.5rem!important;
@@ -84,6 +89,8 @@ p.modalTile{
   /* width: 50%; */
 }
 
+=======
+>>>>>>> master
 @media only screen and (min-width: 1124px) {
 
 .navbarLogo{
@@ -103,6 +110,7 @@ p.modalTile{
 
 }
 
+<<<<<<< HEAD
 @media only screen and (max-width: 460px) { 
 /* Desaparece con display none el div con las publicidades */
 .navbarIzq {
@@ -112,3 +120,10 @@ p.modalTile{
 
 
 
+=======
+@media only screen and (min-width: 500px) {
+
+/* Desaparece con display none el div con las publicidades
+
+}
+>>>>>>> master

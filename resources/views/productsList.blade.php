@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @extends('layouts/layout-ns')
 
 @section('title')
@@ -151,3 +152,6 @@
     </div>
     <!-- /.container -->
 @endsection
+=======
+Prueba Lista de Productos
+>>>>>>> master

@@ -20,9 +20,16 @@
 <body>
 
   <!-- Barra de Navegación -->
+<<<<<<< HEAD
 <header class="sticky-top">
       @include('layouts/header')
 </header>
+=======
+    <header>
+      @include('layouts/header')
+    </header>
+
+>>>>>>> master
   <!-- Contenido -->
     <div class="container">
       @yield('main')

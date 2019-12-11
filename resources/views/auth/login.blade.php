@@ -41,12 +41,24 @@
                 <div class="form-group">
                   <label for="email">{{ __('Correo electrónico') }}</label>
 
+<<<<<<< HEAD
                   <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" aria-describedby="emailHelp" placeholder="Ingresa tu correo electrónico" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
+=======
+                  <!-- En este caso, la clase 'is-invalid' de Bootstrap va a estar funcionando constantemente, 
+                por lo tanto se hace un echo de un isset de la variable $errores, si se cumple se va a mostrar
+                la clase 'is-invalid', de lo contrario no se va a mostrar nada ''. -->
+
+                  <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" aria-describedby="emailHelp" placeholder="Ingresa tu correo electrónico" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+                  <!-- Utilizo el operador 'cuales' (??) Un if ternario. Con el doble signo de pregunta ?? se consulta si existe la variable, en este caso el email, si ésta existe la devuelve, de lo contrario devuelve nada: '' -->
+
+>>>>>>> master
                   @error('email')
                       <span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong> </span>
                   @enderror
                   
+<<<<<<< HEAD
                 </div>
                 <div class="form-group">
                   <label for="password">{{ __('Contraseña') }}</label>
@@ -61,6 +73,22 @@
                   <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                   <label class="form-check-label" for="mantenerme">{{ __('Dejarme conectado') }}</label>
                 </div>
+=======
+                </div>
+                <div class="form-group">
+                  <label for="password">{{ __('Contraseña') }}</label>
+                  <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" placeholder="Ingresa tu contraseña" name="password" required autocomplete="current-password">
+                  
+                    @error('password')
+                        <span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong> </span>
+                    @enderror
+
+                </div>
+                <div class="form-group form-check">
+                  <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                  <label class="form-check-label" for="mantenerme">{{ __('Dejarme conectado') }}</label>
+                </div>
+>>>>>>> master
                 <button type="submit" class="btn btn-danger">{{ __('Ingresar') }}</button>
 
                 @if (Route::has('password.request'))

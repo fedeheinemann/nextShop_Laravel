@@ -12,11 +12,18 @@
 
       <div class="col-lg-3">
 
+<<<<<<< HEAD
         <div class="col-lg-12">
           <h5 class="my-4">Unite a nextShop</h5>
         </div>
 
         <!-- Barra de Navegación Izquierda-->
+=======
+        <h4 class="my-4">Unite a nextShop</h4>
+
+    <!-- Barra de Navegación Izquierda-->
+
+>>>>>>> master
         <div class="list-group navbarIzq">
             <a class="list-group-item " href="#">Publicidad</a>
             <a class="list-group-item" href="#">Publicidad</a>
@@ -83,6 +90,7 @@
             <!-- Fin Formulario Registro-->
 
             <hr>
+<<<<<<< HEAD
                        
               <div class="">
               
@@ -106,6 +114,10 @@
                   </div>
               </div>
 
+=======
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
+            <small class="text-muted">Posted by Anonymous on 3/1/17</small>
+>>>>>>> master
           </div>
         </div>
         <!-- /.card -->

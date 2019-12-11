@@ -12,6 +12,7 @@
 
       <div class="col-lg-3">
 
+<<<<<<< HEAD
         <h5 class="my-4">Alta de Productos</h5>
 
     <!-- Barra de Navegación Izquierda-->
@@ -21,6 +22,21 @@
       </div>
 
     <!-- Formulario Alta Producto-->
+=======
+        <h4 class="my-4">Alta de Productos</h4>
+
+    <!-- Barra de Navegación Izquierda-->
+
+        <div class="list-group navbarIzq">
+            <a class="list-group-item " href="#">Publicidad</a>
+            <a class="list-group-item" href="#">Publicidad</a>
+            <a class="list-group-item " href="#">Publicidad</a>
+        </div>
+
+      </div>
+
+    <!-- Formulario Registro-->
+>>>>>>> master
 
     <div class="col-lg-9">
 
@@ -70,7 +86,11 @@
                 </div>
                 <div class="form-row">
                 <div class="col-md-6 mb-6 form-group">
+<<<<<<< HEAD
                   <label for="brand_id">Marca</label>
+=======
+                  <label for="genre_id">Marca</label>
+>>>>>>> master
                   <select class="custom-select custom-select-sm" name="brand_id" id="brand_id">
                       <option value="">Seleccione</option>
                 @foreach ($brands as $brand)
@@ -111,7 +131,11 @@
                 </div>
                 </div>
                 <hr>
+<<<<<<< HEAD
                 <button type="submit" class="btn btn-danger">Guardar</button>
+=======
+                <button type="submit" class="btn btn-secondary">Guardar</button>
+>>>>>>> master
               </form>
             </div>
 

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <div class="container-navbar bg-dark">
+=======
+<div class="container-navbar bg-dark sticky-top">
+>>>>>>> master
 
 <nav class="navbar navbarLogo navbar-expand-lg navbar-dark bg-dark sticky-top">
     <a class="navbar-brand" href="/"><img class="" src="/img/logo-nextShop-invertido.svg" width="175" alt="nextShop"></a>
@@ -15,6 +19,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Productos</a>
                 
+<<<<<<< HEAD
                 {{-- <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     @foreach ($categoriesmenu as $category)
                         <a class="dropdown-item" href="#">{{ $category['name'] }}</a>
@@ -28,6 +33,23 @@
                     @foreach ($categories as $item)
                         <a class="dropdown-item" href="productos/{{$item->id}}"> {{$item->name}} </a>
                     @endforeach
+=======
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="prod-micros.php">Microprocesadores</a>
+                    <a class="dropdown-item" href="prod-motherboards">Motherboards</a>
+                    <a class="dropdown-item" href="prod-ram.php">Memorias RAM</a>
+                    <a class="dropdown-item" href="prod-hdd-ssd.php">Almacenamiento</a>
+                    <a class="dropdown-item" href="prod-housing.php">Gabinetes</a>
+                    <a class="dropdown-item" href="prod-power.php">Fuentes</a>
+                    <a class="dropdown-item" href="prod-cooler.php">Refrigeración</a>
+                    <a class="dropdown-item" href="prod-graphics.php">Placas de Video</a>
+                    <a class="dropdown-item" href="prod-peri.php">Periféricos</a>
+                    <a class="dropdown-item" href="prod-display.php">Monitores</a>
+                    <a class="dropdown-item" href="prod-audio.php">Audio</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="prod-notebooks.php">Notebooks</a>
+                    <a class="dropdown-item" href="prod-cpus.php">Equipos Armados</a>
+>>>>>>> master
                 </div>
             </li>
             <li>
@@ -80,11 +102,15 @@
                                             document.getElementById('logout-form').submit();">
                             {{ __('Salir') }}
                         </a>
+<<<<<<< HEAD
                         {{-- <a class="dropdown-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
                                             document.getElementById('logout-form').submit();">
                             {{ __('Mi Perfil') }}
                         </a> --}}
+=======
+
+>>>>>>> master
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
                         </form>

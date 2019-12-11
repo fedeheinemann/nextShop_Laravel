@@ -11,12 +11,17 @@
 |
 */
 
+<<<<<<< HEAD
 // Route::get('/', function () {
 //     return view('index');
 // });
 
 Route::get('/legal', function(){
     return view('legal');
+=======
+Route::get('/', function () {
+    return view('index');
+>>>>>>> master
 });
 
 
@@ -32,6 +37,7 @@ GET  | password/reset/{token} | Auth\ResetPasswordController@showResetForm
 GET  | register               | Auth\RegisterController@showRegistrationForm
 POST | register               | Auth\RegisterController@register
 */
+<<<<<<< HEAD
 
 // Route::get('/profile', function(){ return view('profile'); });
 
@@ -41,6 +47,11 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', 'ProductController@listHome');
 
+=======
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+>>>>>>> master
 Route::get('/register', 'Auth\RegisterController@showRegistrationForm');
 
 Route::post('/register', 'Auth\RegisterController@register');
@@ -49,6 +60,7 @@ Route::get('/products', 'ProductController@list');
 
 Route::get('/products/{id}', 'ProductController@detail');
 
+<<<<<<< HEAD
 Route::get('/admin', 'ProductController@index')->middleware('is_admin');
 
 Route::get('/admin/edit/{id}', 'ProductController@edit')->middleware('is_admin');
@@ -86,3 +98,12 @@ Route::get('/admin/brand/{id}', 'BrandController@edit')->middleware('is_admin');
 Route::post('/admin/brand/{id}', 'BrandController@update')->middleware('is_admin');
 
 Route::get('/cart', 'CartController@index')->middleware('is_admin');
+=======
+Route::get('/admin/addProduct', 'ProductController@new')->middleware('is_admin');
+Route::post('/admin/addProduct', 'ProductController@addProduct')->middleware('is_admin');
+
+/*Route::get('/admin/addProduct', function(){
+    return view('/admin/addProduct');
+});
+*/
+>>>>>>> master
