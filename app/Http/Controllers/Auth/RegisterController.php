@@ -1,6 +1,7 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
+
+ini_set('upload_max_size', '10M');
 
 use App\User;
 use App\Http\Controllers\Controller;
@@ -28,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -52,8 +53,9 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'surname' => ['required','string','max:100'],
-            'dni'=> ['required','string','max:9'],
+            // 'surname' => ['nullable','string','max:100'],
+            // 'dni'=> ['nullable','string','max:9'],
+            'avatar' => ['nullable', 'image', 'between:10,10240']
         ]);
     }
 
@@ -65,12 +67,25 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $ruta = '';
+        if (isset($data['avatar'])) {
+            //muevo el archivo
+            $ruta = $data['avatar']->store('public');
+            $ruta = basename($ruta);
+        }
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'surname' => $data['surname'],
-            'dni'=> $data['dni'],
+            // 'surname' => $data['surname'],
+            // 'dni'=> $data['dni'],
+            'avatar' => $ruta,
         ]);
+    }
+
+    public function showRegistrationForm()
+    {
+        return view('register');
     }
 }
