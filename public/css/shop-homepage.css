@@ -1,50 +1,62 @@
 
-body {
+body 
+{
   padding: 0px;
   margin: 0px;
   font-family: 'Roboto', sans-serif !important;
+  font-size: 1em;
   background-color: #F8F9FA;
 }
 
-ul {
+ul 
+{
   list-style: none;
 }
-.navbarIzq {
+
+.navbarIzq 
+{
  margin-top: 24px;
 }
-  /* unvisited link */
- a:link {
+
+/* unvisited link */
+ a:link 
+ {
    color: #000000;
  }
 
  /* visited link */
- a:visited {
-   color: #34495e;
+ a:visited 
+ {
+   color: #747171be;
  }
 
  /* mouse over link */
- a:hover {
-   color: #ec0c0c;
+ a:hover 
+ {
+   color: #fa0015;
    text-decoration: none;
  }
 
  /* selected link */
- a:active {
+ a:active 
+ {
      color: #CCCCCC;
  }
 
-.container-navbar{
+.container-navbar
+{
 padding: 0px;
 margin: 0px;
-
 }
 
-.navbarLogo{
+.navbarLogo
+{
   padding-right: 15px;
   padding-left: 20px;
 }
 
-.navbarIconosRight{
+.navbarIconosRight
+{
   display: flex;
   flex-direction: row;
 /*  justify-content: left;
@@ -53,45 +65,90 @@ margin: 0px;
   padding-left: 15px;
   overflow: hidden;
 }
-.navbarIconosList{
+
+.navbarIconosList
+{
   flex-direction: row;
   float: left;
   width: 50%;
 }
 
-.navbarIconosItem{
+.navbarIconosItem
+{
 width: 100%;
 }
 
-
-p.modalTile{
+p.modalTile
+{
   font-size: 20px;
 }
 
-.listTechSpecs{
+.listTechSpecs
+{
   font-size: 0.9rem;
 }
 
-.mainProd{
+.mainProd
+{
   margin-top:1.5rem!important;
   margin-bottom:1.5rem!important;
 }
 
-.buttonAdminList{
+.buttonAdminList
+{
   flex-direction: row;
   float: right;
   /* margin-bottom: auto; */
   /* width: 50%; */
 }
 
-@media only screen and (min-width: 1124px) {
+.buttonAdminListRadio
+{
+  flex-direction: row;
+  float: right;
+  margin-left: 10px;
+}
 
-.navbarLogo{
+.buttonAdminListLeft
+{
+  flex-direction: row;
+  float: left;
+  margin-left: 10px;
+}
+
+.productsList
+{
+  flex-direction: row;
+  float: left;
+  /* margin-bottom: auto; */
+  /* width: 50%; */
+}
+
+.table-cart
+{
+  background: #ffffff;
+  border-radius: 1em;
+  margin-bottom: 30px;
+  padding: 1em;
+  display: flex;
+}
+
+.table-cart img
+{
+  width: 50px;
+}
+
+@media only screen and (min-width: 1124px) 
+{
+
+.navbarLogo
+{
   padding-right: 15px;
   padding-left: 80px;
 }
 
-.navbarIconosRight{
+.navbarIconosRight
+{
   display: flex;
   flex-direction: row;
 /*  justify-content: left;
@@ -103,11 +160,15 @@ p.modalTile{
 
 }
 
-@media only screen and (max-width: 460px) { 
-/* Desaparece con display none el div con las publicidades */
-.navbarIzq {
+@media only screen and (max-width: 460px) 
+{ 
+
+  /* Desaparece con display none el div con las publicidades */
+.navbarIzq
+{
  display: none;
 }
+
 }
 
 

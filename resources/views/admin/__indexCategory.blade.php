@@ -1,7 +1,7 @@
 @extends('layouts/layout-ns')
 
 @section('title')
-    nextShop::Mi carrito
+    nextShop::Administración
 @endsection
 
 @section('main')
@@ -12,22 +12,22 @@
 
       <div class="col-lg-3">
 
-        <h5 class="my-4">Mi carrito</h5>
+        <h5 class="my-4">Administrador. Categorías.</h5>
 
     <!-- Barra de Navegación Izquierda-->
         @include('layouts/leftMenuAdmin')
 
       </div>
 
-    <!-- Listado de Productos -->
+    <!-- Listado de Categorías -->
 
     <div class="col-lg-9">
 
         <div class="card card-outline-secondary my-4">
           <div class="card-header">
-            Productos 
+            Categorías 
             <div class="buttonAdminList">
-                <button type="button" class="btn btn-outline-dark btn-sm"><a href="admin/add">Alta Producto</a></button>                
+                <button type="button" class="btn btn-outline-dark btn-sm"><a href="/admin/category/add">Alta Categoría</a></button>                
             </div>
             </div>
           <div class="card-body">
@@ -35,19 +35,18 @@
             <div class="form-login">
 
                 <ul class="list-group">
-                    {{-- @foreach ($products as $prod) --}}
+                    @foreach ($categoriesOrdered as $cat)
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <div class="buttonAdminList">
-                        <span class="badge">Sarasa</span>
-                        <span class="badge">sarasa</span>
+                        <div class="productList">
+                        <span class="badge">#ID: {{ $cat['id'] }} |</span>
+                        <small>{{ $cat['name'] }}</small>
                         </div>
-                        <small>Sarasa</small>
                         <div class="buttonAdminList">
-                        <span><a class="btn btn-outline-dark btn-sm" href="#">Modificar</a></span>
+                        <span><a class="btn btn-outline-dark btn-sm" href="/admin/category/{{$cat->id}}">Modificar</a></span>
                         <span><a class="btn btn-outline-dark btn-sm" href="#">Eliminar</a></span>
                         </div>
                     </li>
-                    {{-- @endforeach --}}
+                    @endforeach
                 </ul>
 
             </div>

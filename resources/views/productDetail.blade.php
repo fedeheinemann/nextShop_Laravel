@@ -46,7 +46,7 @@
             <div class="buttonAdminList">
               <span class="text-warning">&#9733; &#9733; &#9733; &#9734; &#9734;</span>
             3 estrellas
-            <span><a class="btn btn-info" href="#">COMPRAR</a></span>
+            <span><a class="btn btn-info" href="{{ route('cart-add', $products->id ) }}">COMPRAR</a></span>
             </div>
             <br><br>
             <!-- Tech Specs Accordion Format -->

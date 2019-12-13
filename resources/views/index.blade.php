@@ -38,7 +38,7 @@
             <span class="sr-only">Next</span>
           </a>
         </div>
-
+        <hr>
         <div class="row">
               @foreach ($products as $prod)
                         <div class="col-lg-4 col-md-6 mb-4">
@@ -52,7 +52,11 @@
                               <small>{{ $prod['description']}}</small>
                             </div>
                             <div class="card-footer">
-                              <span><a class="btn btn-outline-secondary btn-sm" href="#">Comprar</a></span>
+                              <span>
+                                <a class="btn btn-outline-danger btn-sm" href="{{ route('cart-add', $prod->id ) }}">
+                                  Comprar
+                                </a>
+                              </span>
                             </div>
                           </div>
                         </div>

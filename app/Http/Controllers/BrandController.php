@@ -8,27 +8,15 @@ use Illuminate\Support\Facades\DB;
 
 class BrandController extends Controller
 {
-    // public function index()
-    // {
-    //     $brands = Brand::paginate(10);
-    //     $brandsOrdered = $brands->sortBy('name');
-    //     return view('admin.indexBrand', compact('brandsOrdered'));
-    // }
-    
-    
-    
     public function index()
     {
         $brands = Brand::orderBy('name')->paginate(10);
-        // $brandsOrdered = $brands->sortBy('name');
-        // $brandsOrderPage = $brandsOrdered->paginate(10);
         return view('admin.indexBrand', compact('brands'));
     }
 
     public function new()
     {
         $brands = Brand::all();
-
         return view('admin.addBrand', compact('brands'));
     }
 
@@ -46,11 +34,8 @@ class BrandController extends Controller
         ];
 
         $this->validate($req, $rules, $messages);
-
         $newBrand = new Brand;
-
         $newBrand->name = $req->name;
-
         $newBrand->save();
 
         return redirect('/admin/brand');

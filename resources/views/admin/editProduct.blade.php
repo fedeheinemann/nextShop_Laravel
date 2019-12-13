@@ -5,6 +5,7 @@
 @endsection
 
 @section('main')
+{{-- @dd($products); --}}
   <div class="container bg-light ">
 
     <div class="row">
@@ -18,7 +19,7 @@
       </div>
 
     <!-- Formulario Registro-->
-
+{{$errors}}
     <div class="col-lg-9">
 
         <div class="card card-outline-secondary my-4">

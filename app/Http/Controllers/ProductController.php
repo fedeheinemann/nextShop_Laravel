@@ -102,7 +102,7 @@ class ProductController extends Controller
         $rules = [
             'name' => 'required|string|min:2',
             'stock' => 'integer|min:0|max:1000000',
-            'price' => 'integer|min:0',
+            'price' => 'decimal|min:0',
             'description' => 'required|string|min:1',
             'specifications' => 'required|string|min:1',
             'brand_id' => 'required',
@@ -115,7 +115,7 @@ class ProductController extends Controller
             'name.required' => 'El nombre del producto es necesario',
             'name.string' => 'El nombre del producto debe tener letras',
             'name.min' => 'El nombre del producto debe tener al menos 2 letras',
-            'integer' => 'Complete con un número',
+            'decimal' => 'Complete con un número',
             'required' => 'Este campo es requerido',
             'min' => 'Al menos debe tener :min cantidad',
             'max' => 'Hasta un maximo de :max'
@@ -179,6 +179,7 @@ class ProductController extends Controller
                 'max' => 'Hasta un maximo de :max'
             ]
         );
+        
 
             $fileRouteDetail = $req->file('image_detail')->store('public');
             $newFileDetail = basename($fileRouteDetail);

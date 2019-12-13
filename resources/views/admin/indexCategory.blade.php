@@ -36,14 +36,25 @@
 
                 <ul class="list-group">
                     @foreach ($categoriesOrdered as $cat)
+                    
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <div class="buttonAdminList">
-                        <span class="badge">#ID: {{ $cat['id'] }} |</span>
+                        <div class="productList">
+                          <span class="badge">#ID: {{ $cat['id'] }} |</span>
+                          <small>{{ $cat['name'] }}</small>
                         </div>
-                        <small>{{ $cat['name'] }}</small>
                         <div class="buttonAdminList">
-                        <span><a class="btn btn-outline-dark btn-sm" href="/admin/category/{{$cat->id}}">Modificar</a></span>
-                        <span><a class="btn btn-outline-dark btn-sm" href="#">Eliminar</a></span>
+                          <span><a class="btn btn-outline-dark btn-sm" href="/admin/category/{{$cat->id}}">Modificar</a></span>
+                          <div class="buttonAdminListRadio">
+                            <span><small>Visible</small></span>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" {{$cat->visible==1 ? 'checked' : ''}} name="visible{{$cat->id}}" id="inlineRadio1" value="1">
+                                <label class="form-check-label" for="inlineRadio1"><small>Sí</small></label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" {{$cat->visible==0 ? 'checked' : ''}} name="visible{{$cat->id}}" id="inlineRadio2" value="0">
+                                <label class="form-check-label" for="inlineRadio2" required><small>No</small></label>
+                              </div>
+                          </div>
                         </div>
                     </li>
                     @endforeach
@@ -64,5 +75,9 @@
     <!-- /.row -->
 
   </div>
-
+<script >
+window.onload = function(){
+  
+}
+</script>
 @endsection

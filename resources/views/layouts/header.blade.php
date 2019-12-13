@@ -14,20 +14,20 @@
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Productos</a>
-                
-                {{-- <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    @foreach ($categoriesmenu as $category)
-                        <a class="dropdown-item" href="#">{{ $category['name'] }}</a>
-                    @endforeach
-                </div>     --}}
 
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <?php
                     $categories = \App\Category::orderBy('name')->get();
                     ?>
                     @foreach ($categories as $item)
-                        <a class="dropdown-item" href="productos/{{$item->id}}"> {{$item->name}} </a>
+                        @if ($item->visible)
+                            <a class="dropdown-item" href="productos/cat/{{$item->id}}"> {{$item->name}} </a>                                    
+                        @endif
                     @endforeach
+                    {{-- @if ($item->visible){
+                        return $item->name;
+                    }                
+                    @endif --}}
                 </div>
             </li>
             <li>
@@ -101,7 +101,7 @@
     <div class="row navbarIconosRight">
         <ul class="navbar-nav mr-auto navbarIconosList">
             <li class="nav-item navbarIconosItem">
-                <a class="nav-link" href="/carrito"><i class="fas fa-shopping-cart"></i></a>
+                <a class="nav-link" href="/cart/show"><i class="fas fa-shopping-cart"></i></a>
             </li>
             <li class="nav-item navbarIconosItem">
                 <a href="#" class="nav-link"><i class="fab fa-facebook-square"></i></a>

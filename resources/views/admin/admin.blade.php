@@ -36,12 +36,13 @@
 
                 <ul class="list-group">
                     @foreach ($products as $prod)
+                    {{-- @dd($products); --}}
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <div class="buttonAdminList">
+                        <div class="productsList">
                         <span class="badge">#ID: {{ $prod['id'] }} |</span>
-                        <span class="badge">Stock: {{ $prod['stock'] }}</span>
-                        </div>
+                        <span class="badge">Stock: {{ $prod['stock'] }} |</span>
                         <small>{{ $prod['name'] }}</small>
+                        </div>          
                         <div class="buttonAdminList">
                         <span><a class="btn btn-outline-dark btn-sm" href="/admin/edit/{{$prod->id}}">Modificar</a></span>
                         <span><a class="btn btn-outline-dark btn-sm" href="#">Eliminar</a></span>

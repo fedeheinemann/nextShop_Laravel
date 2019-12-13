@@ -11,14 +11,17 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('index');
-// });
+Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/legal', function(){
-    return view('legal');
-});
+Route::get('/', 'ProductController@listHome');
 
+Route::get('/legal', function(){ return view('legal'); });
+
+/*
+|--------------------------------------------------------------------------
+| Login Register Routes
+|--------------------------------------------------------------------------
+*/
 
 Auth::routes();
 /*
@@ -33,21 +36,27 @@ GET  | register               | Auth\RegisterController@showRegistrationForm
 POST | register               | Auth\RegisterController@register
 */
 
-// Route::get('/profile', function(){ return view('profile'); });
-
-// Route::get('/', 'ProductController@menuNavBar');
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/', 'ProductController@listHome');
-
 Route::get('/register', 'Auth\RegisterController@showRegistrationForm');
 
 Route::post('/register', 'Auth\RegisterController@register');
 
+
+/*
+|--------------------------------------------------------------------------
+| Product Routes
+|--------------------------------------------------------------------------
+*/
+
 Route::get('/products', 'ProductController@list');
 
 Route::get('/products/{id}', 'ProductController@detail');
+
+
+/*
+|--------------------------------------------------------------------------
+| Administration Routes
+|--------------------------------------------------------------------------
+*/
 
 Route::get('/admin', 'ProductController@index')->middleware('is_admin');
 
@@ -58,12 +67,6 @@ Route::post('/admin/edit/{id}', 'ProductController@update')->middleware('is_admi
 Route::get('/admin/add', 'ProductController@new')->middleware('is_admin');
 
 Route::post('/admin/add', 'ProductController@addProduct')->middleware('is_admin');
-
-// Route::get('/admin/users', 'UserController@index')->middleware('is_admin');
-
-// Route::get('/admin/users/edit/{id}', 'UserController@edit')->middleware('is_admin');
-
-// Route::post('/admin/users/edit/{id}', 'UserController@update')->middleware('is_admin');
 
 Route::get('/admin/category', 'CategoryController@index')->middleware('is_admin');
 
@@ -85,4 +88,28 @@ Route::get('/admin/brand/{id}', 'BrandController@edit')->middleware('is_admin');
 
 Route::post('/admin/brand/{id}', 'BrandController@update')->middleware('is_admin');
 
-Route::get('/cart', 'CartController@index')->middleware('is_admin');
+// Route::get('/admin/users', 'UserController@index')->middleware('is_admin');
+
+// Route::get('/admin/users/edit/{id}', 'UserController@edit')->middleware('is_admin');
+
+// Route::post('/admin/users/edit/{id}', 'UserController@update')->middleware('is_admin');
+
+/*
+|--------------------------------------------------------------------------
+| Cart Routes
+|--------------------------------------------------------------------------
+*/
+
+// Route::get('/cart', 'CartController@index')->middleware('is_admin');
+
+Route::bind('product', function($id){ return App\Product::where('id', $id)->first(); });
+
+Route::get('cart/show', 'CartController@show')->middleware('is_admin');;
+
+Route::get('cart/add/{id}', ['as' => 'cart-add', 'uses' => 'CartController@add']);
+
+Route::get('cart/delete/{id}', ['as' => 'cart-delete', 'uses' => 'CartController@delete']);
+
+Route::get('cart/trash', ['as' => 'cart-trash', 'uses' => 'CartController@trash']);
+
+Route::get('cart/update/{id}/{quantity}', ['as' => 'cart-update', 'uses' => 'CartController@update']);

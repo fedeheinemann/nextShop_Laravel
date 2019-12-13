@@ -25,7 +25,7 @@
 
         <div class="card card-outline-secondary my-4">
           <div class="card-header">
-            Categorías 
+            Marcas 
             <div class="buttonAdminList">
                 <button type="button" class="btn btn-outline-dark btn-sm"><a href="/admin/brand/add">Alta Marcas</a></button>                
             </div>
@@ -37,10 +37,10 @@
                 <ul class="list-group">
                     @foreach ($brands as $brand)
                     <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <div class="buttonAdminList">
+                        <div class="productList">
                         <span class="badge">#ID: {{ $brand['id'] }} |</span>
-                        </div>
                         <small>{{ $brand['name'] }}</small>
+                        </div>
                         <div class="buttonAdminList">
                         <span><a class="btn btn-outline-dark btn-sm" href="/admin/brand/{{$brand->id}}">Modificar</a></span>
                         <span><a class="btn btn-outline-dark btn-sm" href="#">Eliminar</a></span>
