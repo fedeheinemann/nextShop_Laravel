@@ -102,14 +102,14 @@ Route::post('/admin/brand/{id}', 'BrandController@update')->middleware('is_admin
 
 // Route::get('/cart', 'CartController@index')->middleware('is_admin');
 
-Route::bind('product', function($id){ return App\Product::where('id', $id)->first(); });
+// Route::bind('product', function($id){ return App\Product::where('id', $id)->first(); });
 
-Route::get('cart/show', 'CartController@show')->middleware('is_admin');;
+Route::get('cart/show', 'CartController@show')->middleware('is_admin');
 
-Route::get('cart/add/{id}', ['as' => 'cart-add', 'uses' => 'CartController@add']);
+Route::post('cart/add/{id}', 'CartController@add');
 
-Route::get('cart/delete/{id}', ['as' => 'cart-delete', 'uses' => 'CartController@delete']);
+// Route::get('cart/delete/{id}', 'CartController@delete');
 
-Route::get('cart/trash', ['as' => 'cart-trash', 'uses' => 'CartController@trash']);
+// Route::get('cart/trash', 'CartController@trash');
 
-Route::get('cart/update/{id}/{quantity}', ['as' => 'cart-update', 'uses' => 'CartController@update']);
+// Route::get('cart/update/{id}/{quantity}', 'CartController@update');

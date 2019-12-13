@@ -50,10 +50,10 @@
                       <tbody>
                         {{-- @foreach ($cart as $item) --}}
                             <tr>
-                            <td><img src="/storage/{{ $item->image_home }}"></td>
-                            <td>{{ $item->name }}</td>
+                            <td><img src="#"></td>
+                            <td></td>
                             {{-- <td>${{ number_format($item->price,2) }}</td> --}}
-                            <td>${{ $item->price }}</td>
+                            <td></td>
                             {{-- <td>
                               <input 
                                 type="number"
@@ -71,9 +71,9 @@
                                 <i class="fa fa-refresh"></i>
                               </a>
                             </td> --}}
-                            <td>${{ number_format($item->price * $item->quantity,2) }}</td>
+                            <td></td>
                             <td>
-                              <a href="{{ route('cart-delete', $item->id) }}" class="btn btn-outline">
+                              <a href="" class="btn btn-outline">
                                 <i class="fas fa-trash-alt"></i>
                               </a>
                             </td>

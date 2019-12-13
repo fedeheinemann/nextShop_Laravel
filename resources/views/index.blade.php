@@ -53,7 +53,7 @@
                             </div>
                             <div class="card-footer">
                               <span>
-                                <a class="btn btn-outline-danger btn-sm" href="{{ route('cart-add', $prod->id ) }}">
+                                <a class="btn btn-outline-danger btn-sm" href="#">
                                   Comprar
                                 </a>
                               </span>

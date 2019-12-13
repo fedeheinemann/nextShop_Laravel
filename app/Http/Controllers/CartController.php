@@ -19,18 +19,21 @@ class CartController extends Controller
     // Muestra el carrito.
     public function show()
     {
-        $cart = \Session::get('cart');
+       Cart::where('user_id', '=', \Auth::user()->id)->get();
         
-        return view('cart/cart', compact('cart'));
+       return view('cart/cart');
     }
 
     // Agrega un producto al carrito.
-    public function add(Product $id)
+    public function add(Request $req, $id)
     {
-        $cart = \Session::get('cart');
-        $id->quantity = 1;
-        $cart[$id->id] = $id;
-        \Session::put('cart', $cart);
+        $user = \Auth::user();
+        $cart = new Cart;
+        $cart->user_id = $user->id;
+        $cart->quantity = $req->quantity;
+        $cart->product_id = $id;
+
+        $cart->save();
 
         return redirect('cart/show');
     }
@@ -38,29 +41,20 @@ class CartController extends Controller
     // Borra un producto del carrito.
     public function delete(Product $id)
     {
-        $cart = \Session::get('cart');
-        unset($cart[$id->id]);
-        \Session::put('cart', $cart);
 
-        return redirect('cart/show'); 
     }
 
     // Actualiza el carrito.
     public function update(Product $id, $quantity)
     {
-        $cart = \Session::get('cart');
-        $cart[$id->id]->quantity = $quantity;
-        \Session::put('cart', $cart);
 
-        return redirect('cart/show');
     }
 
 
     // Vaciar el carrito.
     public function trash()
     {
-        \Session::forget('cart');
-        return redirect('cart/show');
+
     }
 
 

@@ -46,7 +46,25 @@
             <div class="buttonAdminList">
               <span class="text-warning">&#9733; &#9733; &#9733; &#9734; &#9734;</span>
             3 estrellas
-            <span><a class="btn btn-info" href="{{ route('cart-add', $products->id ) }}">COMPRAR</a></span>
+            <form method="post" action="/cart/add/{id}">
+            <div class="form-group">
+            <label for="exampleFormControlSelect1">Cantidad</label>
+              <select class="form-control" id="exampleFormControlSelect1">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+              </select>
+              <div class="form-goup">
+              <button type="submit" class="btn btn-danger">Comprar</button>
+              </div>
+            </div>
+            
+            
+            
+            
+            </form>
             </div>
             <br><br>
             <!-- Tech Specs Accordion Format -->
