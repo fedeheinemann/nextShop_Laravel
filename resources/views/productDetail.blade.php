@@ -46,10 +46,11 @@
             <div class="buttonAdminList">
               <span class="text-warning">&#9733; &#9733; &#9733; &#9734; &#9734;</span>
             3 estrellas
+
             <form method="post" action="/cart/add/{id}">
             <div class="form-group">
-            <label for="exampleFormControlSelect1">Cantidad</label>
-              <select class="form-control" id="exampleFormControlSelect1">
+            <label for="comprar">Cantidad</label>
+              <select class="form-control" id="quantity">
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
