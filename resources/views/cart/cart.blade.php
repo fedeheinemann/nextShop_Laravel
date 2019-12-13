@@ -48,12 +48,12 @@
                       </tr>  
                     </thead> 
                       <tbody>
-                        @foreach ($cart as $item)
+                        {{-- @foreach ($cart as $item) --}}
                             <tr>
                             <td><img src=""></td>
-                            <td>{{ $item->product_id }}</td>
-                            <td>${{ $item->price }}</td>
-                            <td>{{ $item}}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                             <td></td>
                             <td>
                               <a href="" class="btn btn-outline">
@@ -61,7 +61,7 @@
                               </a>
                             </td>
                             </tr>
-                        @endforeach
+                        {{-- @endforeach --}}
                       </tbody>                  
                   </table>   
                 </div>
