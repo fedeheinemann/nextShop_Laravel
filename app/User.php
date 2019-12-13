@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use \App\Cart;
+use \App\Product;
 
 class User extends Authenticatable
 {
@@ -36,4 +38,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getCarritos()
+    {
+        return  $this->hasMany(Cart::class);
+    }
+
+    public function getProductos(){
+        return $this->belongsToMany(Product::class,'carts')->withPivot('quantity');;
+    }
 }

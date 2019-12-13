@@ -19,9 +19,13 @@ class CartController extends Controller
     // Muestra el carrito.
     public function show()
     {
-       Cart::where('user_id', '=', \Auth::user()->id)->get();
+       if(\Auth::check()){
+           $cart = \Auth::user()->getProductos()->get();            
+           return view('cart/cart',compact('cart'));
+       }else{
+           return view ('/');
+       }
         
-       return view('cart/cart');
     }
 
    

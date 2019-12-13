@@ -5,7 +5,6 @@
 @endsection
 
 @section('main')
-
   <div class="container bg-light">
 
     <div class="row">
@@ -34,7 +33,8 @@
 
             <div class="form-login">
               <div class="table-cart">
-                {{-- @if(count($cart)) --}}
+                @forelse ($cart as $item)
+                
                 <div class="table-responsive">
                   <table class="table-striped table-hover table-bordered">
                     <thead>
@@ -48,25 +48,27 @@
                       </tr>  
                     </thead> 
                       <tbody>
-                        {{-- @foreach ($cart as $item) --}}
+
                             <tr>
-                            <td><img src=""></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td><img src="/storage/{{$item->image_home}}" alt="" ></td>
+                            <td>{{$item->name}}</td>
+                            <td>{{$item->price}}</td>
+                            <td>{{$item->pivot->quantity}}</td>
+                            <td>{{number_format($item->pivot->quantitiy * $item->price,2)}}</td>
                             <td>
                               <a href="" class="btn btn-outline">
                                 <i class="fas fa-trash-alt"></i>
                               </a>
                             </td>
                             </tr>
-                        {{-- @endforeach --}}
+                        @empty
+                        <h4><span class="label label-warning">No hay productos en tu carrito.</span></h4>    
+                        @endforelse(count($cart))
                       </tbody>                  
                   </table>   
                 </div>
                 {{-- @else
-                  <h4><span class="label label-warning">No hay productos en tu carrito.</span></h4>
+                  
                 @endif --}}
               </div>
             </div>
