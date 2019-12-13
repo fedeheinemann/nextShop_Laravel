@@ -35,37 +35,6 @@ class ProductController extends Controller
         return view('/productDetail', compact('products', 'categories'));
     }
 
-    // public function show($id)
-    // {
-    //     $movie = Movie::find($id);
-    //     $actors = $movie->actors;
-
-    //     $actoresOrdenados = $actors->sortBy('first_name');
-
-    //     //aca lo recorro con un foreach sencillo
-    //     foreach ($actoresOrdenados as $actor) {
-    //         $arrayIds[] = $actor->id;
-    //     }
-
-    //     //aqui voy a usar un map para devolver una collection
-    //     $arrayIds = $actoresOrdenados->map(function ($actor) {
-    //         return $actor->id;
-    //     });
-
-    //     $actors = Actor::whereNotIn('id', $arrayIds)->get()->sortBy('first_name');
-    //     //$actors = Actor::all()->sortBy('first_name');
-    //     //dd($movie->actors);
-    //     return view('movies.show')
-    //         ->with([
-    //             'pelicula' => $movie,
-    //             'actores' => $actors,
-    //             'actoresOrdenados' => $actoresOrdenados,
-    //         ]);
-    // }
-
-
-
-
     public function new()
     {
         $brands = Brand::all();
@@ -78,23 +47,6 @@ class ProductController extends Controller
         $products = Product::paginate(3);
         return view('index', compact('products'));
     }
-
-    // public function menuNavBar()
-    // {
-    //     $categoriesmenu = Category::all();
-
-    //     return view('index', compact('categoriesmenu'));
-
-    // }
-
-
-    // public function categoryList()
-    // {
-    //     $categories = Category::all();
-    //     return 
-
-
-    // }
 
     public function addProduct(Request $req)
     {
@@ -197,14 +149,6 @@ class ProductController extends Controller
             $prodEdited->category_id = $req->category_id;
             $prodEdited->image_detail = $newFileDetail;
             $prodEdited->image_home = $newFileHome;
-
-            // if ($req->file('image_detail') && $req->file('image_home')) {
-            
-            // if ($prodEdited->image_detail && $prodEdited->image_detail != 'default.png') {
-            //     Storage::disk('public')->delete($prodEdited->image_detail);
-            // } elseif ($prodEdited->image_home && $prodEdited->image_home != 'default.png') {
-            //     Storage:disk('public')->delete($prodEdited->image_home);
-            // }
 
             $prodEdited->save();
 

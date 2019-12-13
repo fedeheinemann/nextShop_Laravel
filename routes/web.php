@@ -106,7 +106,7 @@ Route::post('/admin/brand/{id}', 'BrandController@update')->middleware('is_admin
 
 Route::get('cart/show', 'CartController@show')->middleware('is_admin');
 
-Route::post('cart/add/{id}', 'CartController@add');
+Route::post('cart/add/{id}', 'CartController@add')->middleware('is_admin');
 
 // Route::get('cart/delete/{id}', 'CartController@delete');
 

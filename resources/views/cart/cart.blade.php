@@ -5,7 +5,7 @@
 @endsection
 
 @section('main')
-    
+
   <div class="container bg-light">
 
     <div class="row">
@@ -27,7 +27,7 @@
           <div class="card-header">
             Mi carrito
             <div class="buttonAdminList">
-                <button type="button" class="btn btn-outline-danger btn-sm"><a href="{{ route('cart-trash') }}">Vaciar Carrito</a></button>                
+                <button type="button" class="btn btn-outline-danger btn-sm"><a href="{{ '#'}}">Vaciar Carrito</a></button>                
             </div>
             </div>
           <div class="card-body">
@@ -48,29 +48,12 @@
                       </tr>  
                     </thead> 
                       <tbody>
-                        {{-- @foreach ($cart as $item) --}}
+                        @foreach ($cart as $item)
                             <tr>
-                            <td><img src="#"></td>
-                            <td></td>
-                            {{-- <td>${{ number_format($item->price,2) }}</td> --}}
-                            <td></td>
-                            {{-- <td>
-                              <input 
-                                type="number"
-                                min="1"
-                                max='100'
-                                value="{{ $item->quantity }}"
-                                id="product_{{ $item->id }}"
-                              >  
-                              <a 
-                                href="#"
-                                class="btn btn-warning btn-update-item"
-                                data-href="{{ route('cart-update', $item->id) }}"
-                                data-id=" {{ $item->id }} "
-                              >
-                                <i class="fa fa-refresh"></i>
-                              </a>
-                            </td> --}}
+                            <td><img src=""></td>
+                            <td>{{ $item->product_id }}</td>
+                            <td>${{ $item->price }}</td>
+                            <td>{{ $item}}</td>
                             <td></td>
                             <td>
                               <a href="" class="btn btn-outline">
@@ -78,13 +61,13 @@
                               </a>
                             </td>
                             </tr>
-                        {{-- @endforeach --}}
+                        @endforeach
                       </tbody>                  
                   </table>   
                 </div>
-                {{-- @else  --}}
+                {{-- @else
                   <h4><span class="label label-warning">No hay productos en tu carrito.</span></h4>
-                {{-- @endif --}}
+                @endif --}}
               </div>
             </div>
             <hr>

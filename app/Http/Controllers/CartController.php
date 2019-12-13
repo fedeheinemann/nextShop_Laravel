@@ -11,10 +11,10 @@ class CartController extends Controller
 {
     // Constructor
 
-    public function __construct()
-    {
-        if(!\Session::has('cart')) \Session::put('cart', array());
-    }
+    // public function __construct()
+    // {
+    //     if(!\Session::has('cart')) \Session::put('cart', array());
+    // }
 
     // Muestra el carrito.
     public function show()
@@ -24,11 +24,15 @@ class CartController extends Controller
        return view('cart/cart');
     }
 
+   
+
     // Agrega un producto al carrito.
     public function add(Request $req, $id)
     {
         $user = \Auth::user();
+
         $cart = new Cart;
+        
         $cart->user_id = $user->id;
         $cart->quantity = $req->quantity;
         $cart->product_id = $id;

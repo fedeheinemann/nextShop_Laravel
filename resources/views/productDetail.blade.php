@@ -2,11 +2,11 @@
 
 @section('title')
     nextShop::Detalle
-    {{-- ::{{ $prod['id'] }} --}}
+
 @endsection
 
 @section('main')
-    
+
 <!-- Contenido -->
 
   <div class="container bg-light ">
@@ -47,15 +47,14 @@
               <span class="text-warning">&#9733; &#9733; &#9733; &#9734; &#9734;</span>
             3 estrellas
 
-            <form method="post" action="/cart/add/{id}">
+            <form method="post" action="/cart/add/{{ $products['id'] }}">
             <div class="form-group">
+              @csrf
             <label for="comprar">Cantidad</label>
-              <select class="form-control" id="quantity">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
+              <select class="form-control" name="quantity" id="#">
+               @for ($i = 1; $i < 101; $i++)
+                  <option>{{ $i }}</option>
+               @endfor
               </select>
               <div class="form-goup">
               <button type="submit" class="btn btn-danger">Comprar</button>
