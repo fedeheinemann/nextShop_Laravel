@@ -11,9 +11,14 @@ class Cart extends Model
     public $timestamps = true;
     public $guarded = [];
 
-    public function toBuy()
+    public function products()
     {
-        return  $this->belongsToMany(Product::class);
+        return  $this->hasMany(Product::class, 'product_id');
+    }
+
+    public function users()
+    {
+        return $this->hasMany(User::class, 'user_id');
     }
 
 

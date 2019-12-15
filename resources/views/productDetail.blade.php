@@ -50,21 +50,18 @@
             <form method="post" action="/cart/add/{{ $products['id'] }}">
             <div class="form-group">
               @csrf
-            <label for="comprar">Cantidad</label>
+            {{-- <label for="comprar">Cantidad</label>
               <select class="form-control" name="quantity" id="#">
                @for ($i = 1; $i < 101; $i++)
                   <option>{{ $i }}</option>
                @endfor
-              </select>
+              </select> --}}
               <div class="form-goup">
               <button type="submit" class="btn btn-danger">Comprar</button>
               </div>
             </div>
-            
-            
-            
-            
             </form>
+            
             </div>
             <br><br>
             <!-- Tech Specs Accordion Format -->

@@ -31,7 +31,7 @@ class MarcasCategoriasProductos extends Migration
             $table->bigInteger('category_id')->unsigned();
             $table->string('name', 50);
             $table->bigInteger('stock')->default(0);
-            $table->decimal('price', 15,2);
+            $table->decimal('price', 8,2);
             $table->string('image_detail', 200);
             $table->string('image_home', 200);
             $table->timestamps();

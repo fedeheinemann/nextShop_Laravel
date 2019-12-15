@@ -29,8 +29,9 @@
           <div class="card-body">
             <div class="form-login">
 
-              <form method="post" action="" enctype="multipart/form-data">
+              <form method="post" action="/admin/edit/{{ $products->id }}" enctype="multipart/form-data">
                 @csrf
+                @method('patch')
                 <div class="form-group">
                   <label for="name">Nombre</label>
                   <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" aria-describedby="nameHelp" placeholder="Ingrese el nombre del producto" name="name" value="{{old('name', $products->name)}}">
@@ -97,14 +98,23 @@
                 </div>
                 <div class="form-row">
                 <div class="col-md-6 mb-6 form-group">
+                      
                       <label for="image_home">Imagen Listado</label>
-                      <input type="file" class="@error('image_home') is-invalid @enderror" id="image_home" name="image_home">
+                      <div class="col-md-6 mb-6 form-group">
+                      <img src="/storage/{{ $products->image_home }}" alt="" width='100%'>
+                      </div>
+                      <input type="file" id="image_home" name="image_home">
                       @error('image_home')
                           <div class="invalid-feedback">{{$message}}</div>
                       @enderror
+
                 </div>
                 <div class="col-md-6 mb-6 form-group">
+
                       <label for="image_detail">Imagen Detalle</label>
+                      <div class="col-md-6 mb-6 form-group">
+                      <img src="/storage/{{ $products->image_detail }}" alt="" width='100%'>
+                      </div>
                       <input type="file" class="@error('image_detail') is-invalid @enderror" id="image_detail" name="image_detail">
                       @error('image_detail')
                           <div class="invalid-feedback">{{$message}}</div>

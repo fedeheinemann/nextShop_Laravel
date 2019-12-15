@@ -21,13 +21,9 @@
                     ?>
                     @foreach ($categories as $item)
                         @if ($item->visible)
-                            <a class="dropdown-item" href="productos/cat/{{$item->id}}"> {{$item->name}} </a>                                    
+                            <a class="dropdown-item" href="/products/cat/{{$item->id}}"> {{$item->name}} </a>                                    
                         @endif
                     @endforeach
-                    {{-- @if ($item->visible){
-                        return $item->name;
-                    }                
-                    @endif --}}
                 </div>
             </li>
             <li>
@@ -38,12 +34,12 @@
                     </form>
                 </div>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link" href="#">Sucursales</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="faq.php">Centro de Ayuda</a>
-            </li>
+            </li> --}}
         </ul>
 
 <!-- Menu Laravel Login -->
@@ -61,13 +57,17 @@
         <!-- Authentication Links -->
             @guest
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('register') }}">{{ __('Registrarse') }}</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{ route('login') }}">{{ __('Ingresar') }}</a>
                 </li>
-                @if (Route::has('register'))
+                
+                {{-- @if (Route::has('register'))
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                     </li>
-                @endif
+                @endif --}}
             @else
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

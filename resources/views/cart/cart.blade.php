@@ -26,51 +26,49 @@
           <div class="card-header">
             Mi carrito
             <div class="buttonAdminList">
-                <button type="button" class="btn btn-outline-danger btn-sm"><a href="{{ '#'}}">Vaciar Carrito</a></button>                
+              <form action="/cart/trash" method="post">
+                @csrf
+                <button type="submit" class="btn btn-danger btn-sm">Vaciar Carrito</button>                
+              </form>
             </div>
             </div>
           <div class="card-body">
 
+            <div class="">
+                @if (session('status'))
+                    <div class="alert alert-{{session('operation')}}">
+                        {{ session('status') }}
+                    </div>
+                @endif
+            </div>
+           
             <div class="form-login">
-              <div class="table-cart">
-                @forelse ($cart as $item)
-                
-                <div class="table-responsive">
-                  <table class="table-striped table-hover table-bordered">
-                    <thead>
-                      <tr>
-                        <th>Imagen</th>
-                        <th>Producto</th>
-                        <th>Precio</th>
-                        <th>Cantidad</th>
-                        <th>Subtotal</th>
-                        <th>Quitar</th>
-                      </tr>  
-                    </thead> 
-                      <tbody>
+              <ul class="list-group">
+                 @forelse ($cart as $item)
+                      <li class="list-group-item d-flex justify-content-between align-items-left">
+                          <div class="productsList">
+                          <small>{{$item->name}}</small>
+                          <span class="badge">Precio: {{$item->price}} |</span>
+                          <span class="badge">Cantidad: {{$item->pivot->quantity}} |</span>
+                          <span class="badge">Subtotal: {{number_format($item->pivot->quantitiy * $item->price,2)}}</span>
 
-                            <tr>
-                            <td><img src="/storage/{{$item->image_home}}" alt="" ></td>
-                            <td>{{$item->name}}</td>
-                            <td>{{$item->price}}</td>
-                            <td>{{$item->pivot->quantity}}</td>
-                            <td>{{number_format($item->pivot->quantitiy * $item->price,2)}}</td>
-                            <td>
-                              <a href="" class="btn btn-outline">
-                                <i class="fas fa-trash-alt"></i>
-                              </a>
-                            </td>
-                            </tr>
-                        @empty
+                          </div>          
+                          <div class="d-flex buttonAdminList">
+                          <span><a class="btn btn-outline-dark btn-sm" href="#"><i class="fas fa-redo-alt"></i></a></span>
+                          <span>
+                            <form method="post" action="/cart/delete/{{ $item->id }}" enctype="multipart/form-data">
+                              @csrf
+                              @method('delete')
+                              <button type="submit" class="btn btn-secondary btn-sm"><i class="fas fa-trash-alt"></i></button>
+                            </form>
+                          </span>
+                          </div>
+                      </li>
+                  @empty
                         <h4><span class="label label-warning">No hay productos en tu carrito.</span></h4>    
-                        @endforelse(count($cart))
-                      </tbody>                  
-                  </table>   
-                </div>
-                {{-- @else
-                  
-                @endif --}}
-              </div>
+                  @endforelse
+              </ul>
+
             </div>
             <hr>
             <p>

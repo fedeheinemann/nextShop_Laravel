@@ -7,25 +7,35 @@ use App\Brand;
 use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-
+use PhpParser\Node\Stmt\ElseIf_;
 
 class ProductController extends Controller
 {
     
     public function index()
     {
-        $products = Product::all();
+        $products = Product::orderBy('name')->paginate(10);
         $brands = Brand::all();
         $categories = Category::all();
         return view('admin.admin', compact('products', 'brands', 'categories'));
-
     }
     
     
-    public function list()
+    public function listCategory($id)
     {
-        $products = Product::paginate(6);
-        return view('productsList', compact('products'));
+        // $cat = Category::find($id);
+        // $products = Product::where('category_id','=', $cat->id)->paginate(6);
+        // $brands = Brand::where('id','=',$products->brand_id)->get();
+
+        // return view('productsList', compact('products', 'cat', 'brands'));
+
+        $cat = Category::find($id);
+        $products = Product::where('category_id', '=', $cat->id)->paginate(6);
+
+        return view('productsList', compact('products', 'cat'));
+        
+        // $products = Product::paginate(6);
+        // return view('productsList', compact('products'));
     }
 
     public function detail($id)
@@ -37,8 +47,8 @@ class ProductController extends Controller
 
     public function new()
     {
-        $brands = Brand::all();
-        $categories = Category::all();
+        $brands = Brand::orderBy('name')->get();
+        $categories = Category::orderBy('name')->get();
         return view('admin.addProduct', compact('brands', 'categories'));
     }
 
@@ -50,11 +60,10 @@ class ProductController extends Controller
 
     public function addProduct(Request $req)
     {
-
         $rules = [
             'name' => 'required|string|min:2',
             'stock' => 'integer|min:0|max:1000000',
-            'price' => 'decimal|min:0',
+            'price' => 'integer|min:0',
             'description' => 'required|string|min:1',
             'specifications' => 'required|string|min:1',
             'brand_id' => 'required',
@@ -133,13 +142,8 @@ class ProductController extends Controller
         );
         
 
-            $fileRouteDetail = $req->file('image_detail')->store('public');
-            $newFileDetail = basename($fileRouteDetail);
-
-            $fileRouteHome = $req->file('image_home')->store('public');
-            $newFileHome = basename($fileRouteHome);
-    
             $prodEdited = Product::find($id);
+
             $prodEdited->name = $req->name;
             $prodEdited->stock = $req->stock;
             $prodEdited->price = $req->price;
@@ -147,13 +151,70 @@ class ProductController extends Controller
             $prodEdited->specifications = $req->specifications;
             $prodEdited->brand_id = $req->brand_id;
             $prodEdited->category_id = $req->category_id;
-            $prodEdited->image_detail = $newFileDetail;
-            $prodEdited->image_home = $newFileHome;
+            
+            $imageHome = $prodEdited->image_home;
+            if ($req->file('image_home')) {
+                $imageHome = $req->file('image_home')->store('public');
+                $imageHome = basename($imageHome);
+            }
 
+            $prodEdited->image_home = $imageHome;
+
+            $imageDetail = $prodEdited->image_detail;
+            if ($req->file('image_detail')) {
+                $imageDetail = $req->file('image_detail')->store('public');
+                $imageDetail = basename($imageDetail);
+            }
+
+            $prodEdited->image_detail = $imageDetail;
+              
             $prodEdited->save();
 
             return redirect('/admin');
     }
+
+    // Borra un producto.
+    public function delete($id)
+    {
+        //Busca el producto por su id
+        $prod = Product::find($id);
+
+        //Borra las imágenes
+        $image_home_path = storage_path('app/public/') . $prod->image_home;
+        if ($prod->image_home && file_exists($image_home_path)) {
+            unlink($image_home_path);
+        }
+
+        $image_detail_path = storage_path('app/public/') . $prod->image_detail;
+        if ($prod->image_detail && file_exists($image_detail_path)) {
+            unlink($image_detail_path);
+        }
+
+        $prod->delete();
+
+        return redirect('/admin')
+            ->with('status', 'Producto eliminado')
+            ->with('operation', 'warning');
+
+        // //elimino los actor_movie
+        // // TODO: hacerlo
+
+        // //elimino de los que es favorito
+        // $movie->soyFavoritoDe->forEach(function (Actor $actor) {
+        //     $actor->favorite_movie_id = null;
+        //     $actor->save();
+        // });
+
+        // //la elimino de la bd
+        // $movie->delete();
+
+        // return redirect('/movies')
+        //     ->with('status', 'Pelicula eliminada exitosamente!!!')
+        //     ->with('operation', 'warning');
+    }
+
+
+
 
 }
 

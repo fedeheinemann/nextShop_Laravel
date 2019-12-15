@@ -31,7 +31,7 @@
           <div class="card-body">
             <div class="form-login">
 
-              <form method="post" action="" enctype="multipart/form-data">
+              <form method="post" action="/admin/add" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                   <label for="name">Nombre</label>
@@ -74,7 +74,7 @@
                   <select class="custom-select custom-select-sm" name="brand_id" id="brand_id">
                       <option value="">Seleccione</option>
                 @foreach ($brands as $brand)
-                    <option value="{{$brand->id}}" {{ ($brand->id == old('brand_id')) ? 'selected' : '' }} >{{$brand->name}}</option>
+                    <option value="{{$brand->id}}" {{ ($brand->id == old('brand_id')) ? 'selected' : '' }}>{{$brand->name}}</option>
                 @endforeach
                   </select>
                   @error('brand_id')
@@ -82,13 +82,13 @@
                   @enderror
                 </div>
                 <div class="col-md-6 mb-6 form-group">
-                  <label for="genre_id">Categoría</label>
+                  <label for="category_id">Categoría</label>
                   <select class="custom-select custom-select-sm" name="category_id" id="category_id">
                       <option value="">Seleccione</option>
                 @foreach ($categories as $category)
                     <option value="{{$category->id}}" {{ ($category->id == old('category_id')) ? 'selected' : '' }} >{{$category->name}}</option>
                 @endforeach
-                  </select>
+                  </select>                 
                   @error('category_id')
                       {{ $message }}
                   @enderror
@@ -97,14 +97,14 @@
                 <div class="form-row">
                 <div class="col-md-6 mb-6 form-group">
                       <label for="image_home">Imagen Listado</label>
-                      <input type="file" class="@error('image_home') is-invalid @enderror" id="image_home" name="image_home">
+                      <input type="file" class="form-control @error('image_home') is-invalid @enderror" id="image_home" name="image_home">
                       @error('image_home')
                           <div class="invalid-feedback">{{$message}}</div>
                       @enderror
                 </div>
                 <div class="col-md-6 mb-6 form-group">
                       <label for="image_detail">Imagen Detalle</label>
-                      <input type="file" class="@error('image_detail') is-invalid @enderror" id="image_detail" name="image_detail">
+                      <input type="file" class="form-control @error('image_detail') is-invalid @enderror" id="image_detail" name="image_detail">
                       @error('image_detail')
                           <div class="invalid-feedback">{{$message}}</div>
                       @enderror

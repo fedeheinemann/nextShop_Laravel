@@ -88,6 +88,11 @@ p.modalTile
   font-size: 0.9rem;
 }
 
+.container-products
+{
+  margin-bottom:1.5rem!important;
+}
+
 .mainProd
 {
   margin-top:1.5rem!important;
@@ -117,6 +122,14 @@ p.modalTile
 }
 
 .productsList
+{
+  flex-direction: row;
+  float: left;
+  /* margin-bottom: auto; */
+  /* width: 50%; */
+}
+
+.img-cart
 {
   flex-direction: row;
   float: left;
