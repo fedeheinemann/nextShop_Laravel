@@ -30,9 +30,9 @@ class CartController extends Controller
         $user = \Auth::user();
 
         // Verifico si el producto ya está en la lista
-        $product = $user->getProducts->first(function (Product $product) use ($id){
-            return $id == $product->id;
-
+        $product = $user->getProducts->first(function (Product $product) use ($id)
+        {
+        return $id == $product->id;
         });
 
         // Si está en la lista no lo agrego y le aviso al usuario
@@ -46,9 +46,11 @@ class CartController extends Controller
         $cart = new Cart;
         
         $cart->user_id = $user->id;
-        $cart->quantity = $req->quantity;
+        
+        $req->quantity ? $cart->quantity = $req->quantity : $cart->quantity = 1;
+        
         $cart->product_id = $id;
-
+    
         $cart->save();
 
         return redirect('cart/show')
@@ -60,19 +62,7 @@ class CartController extends Controller
     public function delete(Request $req)
     {
         //Busca el producto por su id
-        $prod = Product::find($req);
-
-        //Elimina los productos elegidos
-        $prod->getProducts->forEach(function (Cart $cart) {
-            $cart->product_id = null;
-            $cart->save();
-        });
-
-        // $user = User::
-        // $user->getProducts->forEach(function (Cart $cart) {
-        //     $cart->user_id = null;
-        //     $cart->save();
-        // });
+        $prod = Cart::where('user_id', Auth::user()->id)->where('product_id',$req->id)->get()->first();
 
         //Elimina el producto de la bd
         $prod->delete();
@@ -82,34 +72,23 @@ class CartController extends Controller
             ->with('operation', 'warning');
     }
 
-
-    // public function delete (Request $req)
-    // {
-    //     $prod = Cart::find($req->id);
-    //     $prod->delete();
-
-    //     return redirect('cart/show')
-    //     ->with('status', 'El producto ha sido borrado a su carrito')
-    //     ->with('operation', 'warning');
-    // }
-
-
-
-
-
-
-
     // Actualiza el carrito.
-    public function update(Product $id, $quantity)
+    public function update(Request $r, $id)
     {
-
+        $cart = Cart::where('user_id', Auth::user()->id)->where('product_id', $id)->get()->first();
+        $cart->quantity = $r->quantity;
+        $cart->save();
+        return redirect('cart/show');
     }
 
 
     // Vaciar el carrito.
     public function trash()
     {
-       
+       $cart = Cart::where('user_id',Auth::user()->id);
+       $cart->delete();
+
+       return redirect('cart/show');
     }
 
 

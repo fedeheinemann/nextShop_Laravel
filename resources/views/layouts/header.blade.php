@@ -28,8 +28,8 @@
             </li>
             <li>
                 <div class="navbar-form">
-                    <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="search" placeholder="" aria-label="Search">
+                    <form action="" method="get" class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="text" placeholder="Busca aquí" aria-label="Search" id="texto" name="">
                             <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Buscar</button>
                     </form>
                 </div>

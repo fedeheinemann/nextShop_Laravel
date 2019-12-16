@@ -47,10 +47,10 @@
                         <span><a class="btn btn-outline-dark btn-sm" href="/admin/edit/{{$prod->id}}">Modificar</a></span>
                         <span>
 
-                          <form method="post" action="#">
+                          <form method="post" action="/admin/edit/{{$prod->id}}">
                           <div class="form-group">
                             @csrf
-                            @method('delete')
+                            
                             <div class="form-goup">
                             <button type="submit" class="btn btn-outline-danger btn-sm">Eliminar</button>
                             </div>

@@ -68,7 +68,7 @@ Route::get('/admin/add', 'ProductController@new')->middleware(['auth', 'is_admin
 
 Route::post('/admin/add', 'ProductController@addProduct')->middleware(['auth', 'is_admin']);
 
-Route::delete('/products/{id}', 'ProductController@delete')->middleware(['auth', 'is_admin']);
+Route::post('/admin/edit/{id}', 'ProductController@delete')->middleware(['auth', 'is_admin']);
 
 Route::get('/admin/category', 'CategoryController@index')->middleware(['auth', 'is_admin']);
 
@@ -112,6 +112,8 @@ Route::post('cart/add/{id}', 'CartController@add')->middleware('auth');
 
 Route::delete('cart/delete/{id}', 'CartController@delete')->middleware('auth');
 
-Route::post('cart/trash', 'CartController@trash')->middleware('auth');
+Route::post('cart/update/{id}', 'CartController@update')->middleware('auth');
+
+Route::post('cart/vaciarCarrito', 'CartController@trash')->middleware('auth');
 
 // Route::get('cart/update/{id}/{quantity}', 'CartController@update')->middleware('auth');
