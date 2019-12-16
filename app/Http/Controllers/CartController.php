@@ -54,7 +54,7 @@ class CartController extends Controller
         $cart->save();
 
         return redirect('cart/show')
-            ->with('status', 'El producto ha sido agregado a su carrito')
+            ->with('status', 'Producto agregado exitosamente')
             ->with('operation', 'success');
     }
 

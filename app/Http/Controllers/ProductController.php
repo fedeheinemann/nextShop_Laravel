@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Product;
 use App\Brand;
 use App\Category;
+use App\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use PhpParser\Node\Stmt\ElseIf_;
@@ -187,17 +188,21 @@ class ProductController extends Controller
             unlink($image_detail_path);
         }
 
-        $prod->brand->forEach(function (Brand $brand){
-            $brand->brand_id = null;
-            $brand->save();
-        });
+        // //Borra las claves foráneas
+        // $prod->brand->forEach(function (Brand $brand){
+        //     $brand->brand_id = null;
+        //     $brand->save();
+        // });
         
-        $prod->category->forEach(function (Category $category){
-            $category->category_id = null;
-            $category->save();
-        });
+        // $prod->category->forEach(function (Category $category){
+        //     $category->category_id = null;
+        //     $category->save();
+        // });
         
-           
+        $cart = Cart::where('product_id','=', $id);
+        $cart->delete();
+
+
         $prod->delete();
 
         return redirect('/admin')
@@ -222,6 +227,15 @@ class ProductController extends Controller
         //     ->with('operation', 'warning');
     }
 
+    // public function borrar(Request $formulario)
+    // {
+    //     $id = $formulario["id"];
+    //     $eliminarCarrito = carritoPivot::where('id_product', $id);
+    //     $eliminarCarrito->delete();
+    //     $articulo = Articulo::find($id);
+    //     $articulo->delete();
+    //     return redirect("/admin/articulos");
+    // }
 
 
 

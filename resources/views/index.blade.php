@@ -51,13 +51,7 @@
                               <h6>$ {{ $prod['price'] }}</h6>
                               <small>{{ $prod['description']}}</small>
                             </div>
-                            <div class="card-footer">
-                              <span>
-                                <a class="btn btn-outline-danger btn-sm" href="#">
-                                  Comprar
-                                </a>
-                              </span>
-                            </div>
+                           
                           </div>
                         </div>
               @endforeach
