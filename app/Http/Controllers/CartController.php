@@ -55,7 +55,7 @@ class CartController extends Controller
 
         return redirect('cart/show')
             ->with('status', 'El producto ha sido agregado a su carrito')
-            ->with('operation', 'danger');
+            ->with('operation', 'success');
     }
 
     // Borra un producto del carrito.
@@ -77,6 +77,7 @@ class CartController extends Controller
     {
         $cart = Cart::where('user_id', Auth::user()->id)->where('product_id', $id)->get()->first();
         $cart->quantity = $r->quantity;
+        
         $cart->save();
         return redirect('cart/show');
     }
@@ -90,6 +91,8 @@ class CartController extends Controller
 
        return redirect('cart/show');
     }
+
+
 
 
     // Obtener el total a pagar.

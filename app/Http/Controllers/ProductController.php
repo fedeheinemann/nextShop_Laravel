@@ -187,11 +187,23 @@ class ProductController extends Controller
             unlink($image_detail_path);
         }
 
+        $prod->brand->forEach(function (Brand $brand){
+            $brand->brand_id = null;
+            $brand->save();
+        });
+        
+        $prod->category->forEach(function (Category $category){
+            $category->category_id = null;
+            $category->save();
+        });
+        
+           
         $prod->delete();
 
         return redirect('/admin')
             ->with('status', 'Producto eliminado')
             ->with('operation', 'warning');
+
 
         // //elimino los actor_movie
         // // TODO: hacerlo

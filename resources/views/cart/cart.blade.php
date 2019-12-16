@@ -5,6 +5,9 @@
 @endsection
 
 @section('main')
+<?php
+$subtotal = 0;
+?>
   <div class="container bg-light">
 
     <div class="row">
@@ -52,8 +55,8 @@
                       <li class="list-group-item d-flex justify-content-between align-items-left">
                           <div class="productsList">
                           <small>{{$item->name}}</small>
-                          <span class="badge">Precio: {{$item->price}} |</span>
-                          <span class="badge">Cantidad: {{$item->pivot->quantity}} |</span>
+                          <span class="badge">Precio: ${{number_format($item->price,2)}}</span>
+                          <span class="badge">Cantidad: {{$item->pivot->quantity}} U.</span>
 
                           {{-- Selector de cantidad --}}
                           <span class="badge">
@@ -75,7 +78,8 @@
                         </span>
 
                             <span class="badge">
-                              Subtotal: {{number_format($item->pivot->quantitiy * $item->price,2)}}
+                              <?php $subtotal += ($item->price * $item->pivot->quantity) ?>
+                              Subtotal: ${{number_format($item->price * $item->pivot->quantity,2,",",".")}}
                             </span>  
                           <div class="d-flex buttonAdminList"> 
                           <span>
@@ -96,7 +100,11 @@
                   @endforelse
               </ul>
               </div>
-            
+            <div class="form-group">
+
+              <small>Total a pagar: {{number_format($subtotal,2,",",".")}}</small> 
+
+            </div>
             <hr>
             <p>
               <a href="/" class="btn btn-outline-secondary btn-sm">
