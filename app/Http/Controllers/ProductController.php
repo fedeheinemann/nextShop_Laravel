@@ -30,7 +30,7 @@ class ProductController extends Controller
         $brands = Brand::all();
 
         foreach ($brands as $brand) {
-            //dd($brand->productsBrand()->get(), $brand->name);
+            // dd($brand->productsBrand()->get(), $brand->name);
         }
 
         return view('productsList', compact('products', 'cat'));
@@ -187,18 +187,8 @@ class ProductController extends Controller
         if ($prod->image_detail && file_exists($image_detail_path)) {
             unlink($image_detail_path);
         }
-
-        // //Borra las claves foráneas
-        // $prod->brand->forEach(function (Brand $brand){
-        //     $brand->brand_id = null;
-        //     $brand->save();
-        // });
         
-        // $prod->category->forEach(function (Category $category){
-        //     $category->category_id = null;
-        //     $category->save();
-        // });
-        
+        //Borra el producto del carrito de compras
         $cart = Cart::where('product_id','=', $id);
         $cart->delete();
 
@@ -209,35 +199,7 @@ class ProductController extends Controller
             ->with('status', 'Producto eliminado')
             ->with('operation', 'warning');
 
-
-        // //elimino los actor_movie
-        // // TODO: hacerlo
-
-        // //elimino de los que es favorito
-        // $movie->soyFavoritoDe->forEach(function (Actor $actor) {
-        //     $actor->favorite_movie_id = null;
-        //     $actor->save();
-        // });
-
-        // //la elimino de la bd
-        // $movie->delete();
-
-        // return redirect('/movies')
-        //     ->with('status', 'Pelicula eliminada exitosamente!!!')
-        //     ->with('operation', 'warning');
     }
-
-    // public function borrar(Request $formulario)
-    // {
-    //     $id = $formulario["id"];
-    //     $eliminarCarrito = carritoPivot::where('id_product', $id);
-    //     $eliminarCarrito->delete();
-    //     $articulo = Articulo::find($id);
-    //     $articulo->delete();
-    //     return redirect("/admin/articulos");
-    // }
-
-
 
 }
 

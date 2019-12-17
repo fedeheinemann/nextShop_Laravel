@@ -29,7 +29,7 @@
     </div>
    
   <!-- Footer -->
-    <footer class="py-5 bg-dark">
+    <footer class="container border-top pt-4">
       @include('layouts/footer')
     </footer>
 

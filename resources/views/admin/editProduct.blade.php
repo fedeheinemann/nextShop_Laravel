@@ -12,14 +12,14 @@
 
       <div class="col-lg-3">
 
-        <h4 class="my-4">Edición de Productos</h4>
+        <h6 class="my-4">Administrador. Editar Producto</h6>
         
     <!-- Barra de Navegación Izquierda-->
         @include('layouts/leftMenuAdmin')
       </div>
 
     <!-- Formulario Registro-->
-{{$errors}}
+{{-- {{$errors}} --}}
     <div class="col-lg-9">
 
         <div class="card card-outline-secondary my-4">

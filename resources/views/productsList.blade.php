@@ -14,7 +14,7 @@
 
       <div class="col-lg-3">
 
-        <h4 class="my-4">{{ $cat->name }}</h4>
+        <h5 class="my-4">{{ $cat->name }}</h5>
 
 <!-- Barra de Navegavión Categorías Notebook Marcas -->
 {{-- @foreach ($products->brand as $item)    

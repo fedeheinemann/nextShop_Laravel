@@ -13,10 +13,10 @@ class Product extends Model
     // public $timestamps = false;
     public $guarded = [];
 
-    // public function myCarts()
-    // {
-    //     return $this->hasMany(Cart::class, 'id');
-    // }
+    public function myCarts()
+    {
+        return $this->hasMany(Cart::class, 'id');
+    }
     
     public function brand()
     {

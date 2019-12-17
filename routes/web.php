@@ -102,10 +102,6 @@ Route::get('/admin/users', 'UserController@index')->middleware(['auth', 'is_admi
 |--------------------------------------------------------------------------
 */
 
-// Route::get('/cart', 'CartController@index')->middleware('is_admin');
-
-// Route::bind('product', function($id){ return App\Product::where('id', $id)->first(); });
-
 Route::get('cart/show', 'CartController@show')->middleware('auth');
 
 Route::post('cart/add/{id}', 'CartController@add')->middleware('auth');
@@ -115,5 +111,3 @@ Route::delete('cart/delete/{id}', 'CartController@delete')->middleware('auth');
 Route::post('cart/update/{id}', 'CartController@update')->middleware('auth');
 
 Route::post('cart/vaciarCarrito', 'CartController@trash')->middleware('auth');
-
-// Route::get('cart/update/{id}/{quantity}', 'CartController@update')->middleware('auth');

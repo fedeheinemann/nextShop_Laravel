@@ -59,6 +59,7 @@ $subtotal = 0;
                           <span class="badge">Cantidad: {{$item->pivot->quantity}} U.</span>
 
                           {{-- Selector de cantidad --}}
+                          <div class="d-flex buttonAdminList"> 
                           <span class="badge">
                           
                           <form method="post" action="/cart/update/{{$item->id}}">
@@ -76,13 +77,14 @@ $subtotal = 0;
                               </div>
                           </form>
                         </span>
+                      </div>
 
                             <span class="badge">
                               <?php $subtotal += ($item->price * $item->pivot->quantity) ?>
-                              Subtotal: ${{number_format($item->price * $item->pivot->quantity,2,",",".")}}
+                              Subtotal: ${{ number_format($item->price * $item->pivot->quantity,2,",",".") }}
                             </span>  
                           <div class="d-flex buttonAdminList"> 
-                          <span>
+                          <span class="badge">
                             {{-- Botón Delete Item--}}
                             <form method="post" action="/cart/delete/{{ $item->id }}" enctype="multipart/form-data">
                               @csrf
@@ -96,7 +98,7 @@ $subtotal = 0;
                       </li>
                       
                   @empty
-                        <h4><span class="label label-warning">No hay productos en tu carrito.</span></h4>    
+                        <h4><span class="label label-warning">No hay productos en tu carrito :(</span></h4>    
                   @endforelse
               </ul>
               </div>
