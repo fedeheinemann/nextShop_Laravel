@@ -15,7 +15,7 @@ class ProductController extends Controller
     
     public function index()
     {
-        $products = Product::orderBy('name')->paginate(10);
+        $products = Product::orderBy('name')->paginate(10); 
         $brands = Brand::all();
         $categories = Category::all();
         return view('admin.admin', compact('products', 'brands', 'categories'));
@@ -29,9 +29,9 @@ class ProductController extends Controller
 
         $brands = Brand::all();
 
-        foreach ($brands as $brand) {
-            // dd($brand->productsBrand()->get(), $brand->name);
-        }
+        // foreach ($brands as $brand) {
+        //     // dd($brand->productsBrand()->get(), $brand->name);
+        // }
 
         return view('productsList', compact('products', 'cat'));
     }
@@ -40,7 +40,9 @@ class ProductController extends Controller
     {
         $products = Product::find($id);
         $categories = Category::all();
-        return view('/productDetail', compact('products', 'categories'));
+        $brands = Brand::all();
+
+        return view('/productDetail', compact('products', 'categories', 'brands'));
     }
 
     public function new()

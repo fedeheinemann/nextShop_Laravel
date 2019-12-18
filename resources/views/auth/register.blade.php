@@ -86,7 +86,7 @@
                        
               <div class="">
               
-                <h5>¿Qué vas a poder hacer en tu cuenta?</h5>
+                <h6>¿Qué vas a poder hacer en tu cuenta?</h6>
                 <div>
                     <ul>
                         <li><i class="fas fa-check"></i> Consultar el estado de tus compras.</li>
@@ -101,7 +101,7 @@
                         Recibí notificaciones de tus compras, ofertas y descuentos exclusivos.
                         <br>
                         <hr>
-                        <a href="/legal">Ver políticas de privacidad</a>
+                        <small><a href="/legal">Ver políticas de privacidad</a></small>
                     </p>
                   </div>
               </div>

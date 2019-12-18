@@ -37,29 +37,21 @@
                 <ul class="list-group">
                     @foreach ($products as $prod)
                     {{-- @dd($products); --}}
-                    <li class="list-group-item d-flex justify-content-between align-items-left">
-                        <div class="productsList">
+                    <li class="list-group-item">
                         <span class="badge">#ID: {{ $prod['id'] }} |</span>
                         <span class="badge">Stock: {{ $prod['stock'] }} |</span>
                         <small>{{ $prod['name'] }}</small>
-                        </div>          
-                        <div class="buttonAdminList">
-                        <span><a class="btn btn-outline-dark btn-sm" href="/admin/edit/{{$prod->id}}">Modificar</a></span>
-                        <span>
-
-                          <form method="post" action="/admin/edit/{{$prod->id}}">
-                          <div class="form-group">
-                            @csrf
-                            
-                            <div class="form-goup">
-                            <button type="submit" class="btn btn-outline-danger btn-sm">Eliminar</button>
-                            </div>
-                          </div>
-                          </form>
-
-
+                      <div class="buttonAdminList">
+                        <span class="badge">
+                          <a class="btn btn-outline-dark btn-sm" href="/admin/edit/{{$prod->id}}">Modificar</a>
                         </span>
-                        </div>
+                        <span class="badge">
+                          <form method="post" action="/admin/edit/{{$prod->id}}">
+                            @csrf
+                            <button type="submit" class="btn btn-outline-danger btn-sm">Eliminar</button>
+                          </form>
+                        </span>
+                      </div>
                     </li>
                     @endforeach
                 </ul>

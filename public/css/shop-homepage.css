@@ -8,6 +8,12 @@ body
   background-color: #F8F9FA;
 }
 
+.hr-cart 
+{
+  width: 40%;
+  border: 2px;
+}
+
 ul 
 {
   list-style: none;
@@ -66,6 +72,10 @@ margin: 0px;
   overflow: hidden;
 }
 
+.font-cart
+{
+  font-size: 0.90em;
+}
 .navbarIconosList
 {
   flex-direction: row;
