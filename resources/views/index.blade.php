@@ -41,19 +41,18 @@
         <hr>
         <div class="row">
               @foreach ($products as $prod)
-                        <div class="col-lg-4 col-md-6 mb-4">
-                          <div class="card h-100">
-                          <a href="/products/{{ $prod['id'] }}"><img class="card-img-top" src="/storage/{{ $prod['image_home'] }}" alt=""></a>
-                            <div class="card-body">
-                              <h5 class="card-title">
-                                <a href="/products/{{ $prod['id'] }}">{{ $prod['name'] }}</a>
-                              </h5>
-                              <h6>$ {{ $prod['price'] }}</h6>
-                              <small>{{ $prod['description']}}</small>
-                            </div>
-                           
-                          </div>
+                    <div class="col-lg-4 col-md-6 mb-4">
+                      <div class="card h-100">
+                      <a href="/products/{{ $prod['id'] }}"><img class="card-img-top" src="/storage/{{ $prod['image_home'] }}" alt=""></a>
+                        <div class="card-body">
+                          <h5 class="card-title">
+                            <a href="/products/{{ $prod['id'] }}">{{ $prod['name'] }}</a>
+                          </h5>
+                          <h6>$ {{ $prod['price'] }}</h6>
+                          <small>{{ $prod['description']}}</small>
                         </div>
+                      </div>
+                    </div>
               @endforeach
         </div>
         <!-- /.row -->
