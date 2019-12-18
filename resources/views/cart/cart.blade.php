@@ -58,7 +58,7 @@ $subtotal = 0;
 
                 <li class="list-group-item">
                   <span class="font-cart">{{$item->name}} /</span>
-                  <span class="font-cart"><strong> ${{number_format($item->price,2)}} </strong> /</span>
+                  <span class="font-cart"><strong> ${{number_format($item->price,2,",",".")}} </strong> /</span>
                   <span class="font-cart"><strong> {{$item->pivot->quantity}} Un.</strong> /</span>
                   
                   <span class="font-cart">

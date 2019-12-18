@@ -52,7 +52,7 @@
             </div>
             <hr>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-            <small class="text-muted">Posted by Anonymous on 3/1/17</small>
+            <small class="text-muted">&copy; 2019 nextShop S.A.I.C.e.I.</small>
           </div>
         </div>
         <!-- /.card -->
