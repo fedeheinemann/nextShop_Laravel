@@ -26,14 +26,17 @@ class ProductController extends Controller
     {
         $cat = Category::find($id);
         $products = Product::where('category_id', '=', $cat->id)->paginate(6);
-
+        //  dd($products);
         $brands = Brand::all();
+        // dd($brands);
 
         // foreach ($brands as $brand) {
-        //     // dd($brand->productsBrand()->get(), $brand->name);
+        //     $brandList = $brand->id === $products->brand_id;
         // }
 
-        return view('productsList', compact('products', 'cat'));
+        // $brands = Brand::where('id', $products->brand_id)->get();
+        // dd($brands);
+        return view('productsList', compact('products', 'cat', 'brands'));
     }
 
     public function detail($id)

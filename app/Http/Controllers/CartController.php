@@ -68,7 +68,7 @@ class CartController extends Controller
         $prod->delete();
 
         return redirect('cart/show')
-            ->with('status', 'El producto ha sido borrado a su carrito')
+            ->with('status', 'El producto ha sido borrado de su carrito')
             ->with('operation', 'warning');
     }
 

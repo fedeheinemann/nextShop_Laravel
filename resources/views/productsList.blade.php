@@ -15,7 +15,15 @@
       <div class="col-lg-3">
 
         <h5 class="my-4">{{ $cat->name }}</h5>
+{{-- @dd($brands) --}}
 
+{{-- <div class="list-group navbarIzq">
+            @foreach ($brands as $brand)
+            @if ($brand->id === $products->brand_id)
+                <a class="list-group-item" href="#">{{ $brand->name }}</a> 
+            @endif  
+            @endforeach
+          </div> --}}
             <div class="list-group navbarIzq">
                 <a class="list-group-item " href="#">Apple</a>
                 <a class="list-group-item" href="#">Asus</a>
@@ -36,23 +44,23 @@
       <div class="col-lg-9">
 
           <div class="mainProd row">
-                  @foreach ($products as $prod)
-                              <div class="col-lg-4 col-md-6 mb-4">
-                                <div class="card h-100">
-                                  <a href="/products/{{ $prod->id }}"><img class="card-img-top" src="/storage/{{ $prod->image_home }}" alt=""></a>
-                                  <div class="card-body">
-                                    <h5 class="card-title">
-                                      <a href="/products/{{ $prod->id }}">{{ $prod->name }}</a>
-                                    </h5>
-                                  <h6>$ {{ $prod->price }} </h6>
-                                    <small>{{ $prod->description }}</small>
-                                  </div>
-                                  <div class="card-footer">
-                                    <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
-                                  </div>
-                                </div>
+              @foreach ($products as $prod)
+                          <div class="col-lg-4 col-md-6 mb-4">
+                            <div class="card h-100">
+                              <a href="/products/{{ $prod->id }}"><img class="card-img-top" src="/storage/{{ $prod->image_home }}" alt=""></a>
+                              <div class="card-body">
+                                <h5 class="card-title">
+                                  <a href="/products/{{ $prod->id }}">{{ $prod->name }}</a>
+                                </h5>
+                              <h6>$ {{ $prod->price }} </h6>
+                                <small>{{ $prod->description }}</small>
                               </div>
-                  @endforeach
+                              <div class="card-footer">
+                                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                              </div>
+                            </div>
+                          </div>
+              @endforeach
           </div>
           {{ $products->links() }}
           <!-- /.row -->
